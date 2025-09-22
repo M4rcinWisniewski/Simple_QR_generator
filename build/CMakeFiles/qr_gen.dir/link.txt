@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/qr_gen.dir/link.d CMakeFiles/qr_gen.dir/src/main.cpp.o -o qr_gen
