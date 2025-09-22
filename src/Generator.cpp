@@ -59,6 +59,17 @@ namespace {
         }
         return result;
     }
+
+    std::string add_terminator(std::string data) {
+        std::string new_data = data;
+        int data_len = data.length();
+        if (data_len % 8 != 0) {
+            for (int i = 0; i < data_len % 8; i++) {
+                new_data.push_back('0');
+            }
+        }
+        return new_data;
+    }
 }
 
 // Class methods
@@ -104,7 +115,13 @@ std::string Generator::encode_message() {
 
     std::vector sliced_val = sliced_string(string_val);
     for (size_t i = 0; i < sliced_val.size(); i++) {
-        result += add_padding(to_bin(std::stoi(sliced_val[i])), num_of_bits[sliced_val[i].length() - 1]) + " "; 
+        result += add_padding(to_bin(std::stoi(sliced_val[i])), num_of_bits[sliced_val[i].length() - 1]); 
     }
     return result;
 } 
+
+
+std::string Generator::qr_data() {
+    std::string combined_data = add_terminator(mode_indicator() + CCI() + encode_message());
+    return combined_data;
+}

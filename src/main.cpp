@@ -2,10 +2,9 @@
 #include "Generator.cpp"
 #include <string>
 int main() {
-    int num = 1234;
+    int num = 123;
     Generator A(num);
-    std::cout << A.mode_indicator() << " " << A.CCI() << " "
-    << A.encode_message() << "\n";
-    std::cout << A.get_version() << "\n";
+    std::cout << A.qr_data() << "\n";
+    std::cout << A.qr_data().length() << "\n";
     return 0;
 }
