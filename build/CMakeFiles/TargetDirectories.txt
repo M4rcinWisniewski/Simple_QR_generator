@@ -1,0 +1,3 @@
+/home/marcinwisniewski/Documents/Hobby_coding/QR/build/CMakeFiles/qr_gen.dir
+/home/marcinwisniewski/Documents/Hobby_coding/QR/build/CMakeFiles/edit_cache.dir
+/home/marcinwisniewski/Documents/Hobby_coding/QR/build/CMakeFiles/rebuild_cache.dir
