@@ -4,11 +4,11 @@
 
 int main(int argc, char *argv[]) {
     int num;
-    
+
     // Validates users input argument
     if (argc == 2) {
         try {
-            int num = std::stoi(argv[1]);
+            num = std::stoi(argv[1]);
         } catch (const std::invalid_argument&) {
             std::cerr << "Not a valid integer!" << std::endl;
         } catch (const std::out_of_range&) {
@@ -20,7 +20,8 @@ int main(int argc, char *argv[]) {
 
 
     Generator A(num);
-    std::cout << A.qr_data() << "\n";
-    std::cout << A.qr_data().length() << "\n";
+    A.save_as_img(A.qr_data());
+    
     return 0;
 }
+

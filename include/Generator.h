@@ -1,11 +1,10 @@
 #include <string>
-
+#include <vector>
 
 class Generator {
     private: 
         int value;
-        char ecc;
-        int version;
+        int version = 1;
         int mode = 1;
     public:
         // Constructor 
@@ -14,8 +13,9 @@ class Generator {
         std::string CCI();
         std::string mode_indicator();
         std::string encode_message();
-        std::string qr_data();
-        
+        std::vector<std::vector<int>> qr_data();
+        void save_as_img(std::vector<std::vector<int>> matrix) const;
+
         int determine_version(int num_digits);
         int get_value() const;
         int get_version() const;
