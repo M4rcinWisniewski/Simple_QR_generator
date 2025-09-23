@@ -20,6 +20,12 @@ int main(int argc, char *argv[]) {
 
 
     Generator A(num);
+    for (auto sub_vec : A.qr_data()) {
+        for (auto digit : sub_vec) {
+            std::cout << digit << " ";
+        }
+        std::cout << "\n";
+    }
     A.save_as_img(A.qr_data());
     
     return 0;

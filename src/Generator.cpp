@@ -114,7 +114,10 @@ namespace {
         // Timing patterns
         if (r == 6 || c == 6)
             return true;
-
+        //Dark module
+        if (r == 4 * 1 + 9 && c == 9) {
+            return true;
+        }
         return false; // available for data
     }
 
@@ -133,6 +136,30 @@ namespace {
                     }
                 }
             }
+        }
+    }
+
+    void add_dark_module(std::vector<std::vector<int>> &matrix) {
+        int row = 4 * 1 + 9;
+        int col = 8;
+        matrix[row][col] = 1;
+    }
+
+    void add_format_info(std::vector<std::vector<int>> &matrix) {
+        std::string pattern = "111011111000100";
+        int row_str_index = 0;
+        int col_str_index = 0;
+
+        for (int r = 0; r < matrix.size(); r++) {
+            for (int c = 0; c < matrix[r].size(); c++ ) {
+                if ((c < 6 || c > 6 && c < 9 || c > 14) && r == 8) {
+                    matrix[r][c] = pattern[row_str_index++] - '0';
+                }
+                if ((r < 6 || r > 6 && r < 9 || r > 14) && c == 8) {
+                    matrix[r][c] = pattern[col_str_index++] - '0';
+                }
+            }
+
         }
     }
 
@@ -231,7 +258,10 @@ std::vector<std::vector<int>> Generator::qr_data() {
         matrix[i][6] = i % 2 ? 0 : 1;   // vertical
     }
     std::cout << code << '\n';
+    add_format_info(matrix);
+    add_dark_module(matrix);
     add_code(matrix, code);
+    
     return matrix;
 }
 
